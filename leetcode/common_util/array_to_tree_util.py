@@ -49,6 +49,13 @@ class ArrayToTreeUtil:
         """
         if arr is None or len(arr) == 0:
             return None
+        # TODO  20190927
+        # 此处必须加clear(),否则会出现如下问题:
+        # 1.在同一个方法内连续调用trans_array_to_treenode_2(a)和trans_array_to_treenode_2(b)时,会发现rank1和rank2不为空,而是上一次调用时的引用
+        # 2.但是如果显式声明为trans_array_to_treenode_2(a,[],[])和trans_array_to_treenode_2(b,[],[])就是正确的.
+        # 暂时不知道原因,待查
+        rank1.clear()
+        rank2.clear()
         root = TreeNode(arr[0])
         rank1.append(root)
         i = 1
@@ -67,7 +74,6 @@ class ArrayToTreeUtil:
                     i += 1
             rank1 = rank2
             rank2 = []
-
         return root
 
     def preorder(self, root, ret_list=[]):
@@ -112,6 +118,14 @@ def main():
     print(str(list_1))
 
     a = [9, 6, -3, None, None, -6, 2, None, None, 2, None, -6, -6, -6]
+    # ret1 = ArrayToTreeUtil().trans_array_to_treenode_1(a)
+    # print(ret1)
+    ret_2 = ArrayToTreeUtil().trans_array_to_treenode_2(a, [], [])
+    print(ret_2)
+    list_2 = ArrayToTreeUtil().bfs_traverse(ret_2)
+    print(str(list_2))
+
+    a = [4, 1, 2]
     # ret1 = ArrayToTreeUtil().trans_array_to_treenode_1(a)
     # print(ret1)
     ret_2 = ArrayToTreeUtil().trans_array_to_treenode_2(a, [], [])
