@@ -26,7 +26,7 @@ import leetcode.common_util.array_to_tree_util as array_to_tree
 
 class Solution:
     def isSymmetric(self, root):
-        return self.isSymmetric_2(root) 
+        return self.isSymmetric_2(root)
 
     def isSymmetric_1(self, root):
         """
