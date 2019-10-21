@@ -64,13 +64,15 @@ class ArrayToTreeUtil:
                 if rank1_node:
                     if i >= len(arr):
                         break
-                    rank1_node.left = TreeNode(arr[i])
-                    rank2.append(rank1_node.left)
+                    if arr[i]:
+                        rank1_node.left = TreeNode(arr[i])
+                        rank2.append(rank1_node.left)
                     i += 1
                     if i >= len(arr):
                         break
-                    rank1_node.right = TreeNode(arr[i])
-                    rank2.append(rank1_node.right)
+                    if arr[i]:
+                        rank1_node.right = TreeNode(arr[i])
+                        rank2.append(rank1_node.right)
                     i += 1
             rank1 = rank2
             rank2 = []
