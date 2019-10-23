@@ -1,7 +1,7 @@
 class Solution:
     """
     https://leetcode.com/problems/permutations/
-    46. Permutations
+    46. 46_Permutations
     Medium
     """
 
