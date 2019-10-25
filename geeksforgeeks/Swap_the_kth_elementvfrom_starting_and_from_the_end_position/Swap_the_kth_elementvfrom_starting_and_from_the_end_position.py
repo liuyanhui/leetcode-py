@@ -51,7 +51,8 @@ class Solution:
                 # 特殊情况1
                 # 另,对于引用传递,连续赋值语句需要注意变量的顺序
                 swap_b.next, swap_b.next.next, swap_e.next = swap_e.next, swap_e, swap_e.next.next
-                # swap_b.next.next, swap_b.next, swap_e.next = swap_e, swap_e.next, swap_e.next.next
+                # 如果替换上面的代码就会报错的
+                # swap_b.next.next, swap_b.next, swap_e.next = swap_e.next.next, swap_e.next, swap_e
             elif swap_e.next == swap_b:
                 # 特殊情况2
                 swap_e.next, swap_e.next.next, swap_b.next = swap_b.next, swap_b, swap_b.next.next
