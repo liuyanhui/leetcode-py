@@ -35,7 +35,7 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        return self.hammingWeight_2(n)
+        return self.hammingWeight_3(n)
 
     def hammingWeight_1(self, n):
         """
@@ -59,11 +59,23 @@ class Solution:
             c += 1
         return c
 
+    def hammingWeight_3(self, n):
+        """
+        参考思路:https://leetcode.com/problems/number-of-1-bits/solution/
+        整数是32bit,数字向左循环移位32次即可,每次移位后&1运算即可
+        :param n:
+        :return:
+        """
+        ret = 0
+        for i in range(32):
+            ret += (n >> i) & 1
+        return ret
+
 
 def main():
-    # ret = Solution().hammingWeight(0)
-    # print(ret)
-    # print("--------------------")
+    ret = Solution().hammingWeight(0)
+    print(ret)
+    print("--------------------")
     #
     m = 0b11111111111111111111111111111101
     ret = Solution().hammingWeight(m)
@@ -78,7 +90,6 @@ def main():
     # print(ret)
     # print("--------------------")
 
-    pass
 
 
 if __name__ == "__main__":
