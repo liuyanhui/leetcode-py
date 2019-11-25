@@ -87,6 +87,7 @@ class Solution:
         """
         参考思路:
         https://leetcode.com/problems/can-i-win/discuss/95292/Python-solution-easy-to-understand
+        https://leetcode.com/problems/can-i-win/discuss/159797/Python-83-simple-READABLE-code-with-good-comments
         :param maxChoosableInteger:
         :param desiredTotal:
         :return:
