@@ -27,7 +27,33 @@ import sys
 
 class Solution:
     def divide(self, dividend, divisor):
+        return self.divide_1(dividend, divisor)
+
+    def divide_2(self, dividend, divisor):
         """
+        精简版代码,非递归思路,参考思路:
+        https://leetcode.com/problems/divide-two-integers/discuss/13403/Clear-python-code
+        :param dividend:
+        :param divisor:
+        :return:
+        """
+        positive = (dividend < 0) is (divisor < 0)
+        dividend, divisor = abs(dividend), abs(divisor)
+        res = 0
+        while dividend >= divisor:
+            temp, i = divisor, 1
+            while dividend >= temp:
+                dividend -= temp
+                res += i
+                i <<= 1
+                temp <<= 1
+        if not positive:
+            res = -res
+        return min(max(-2147483648, res), 2147483647)
+
+    def divide_1(self, dividend, divisor):
+        """
+        递归思路
         不能用乘\除\mod操作,我们可以通过左移位<<2来模拟乘以2的情况.
         思路如下:
         1.我们通过循环可以计算出divisor*(2^n)<dividend<divisor*(2^(n+1)).
@@ -50,7 +76,7 @@ class Solution:
         if divisor == 0 or dividend == 0:
             return 0
 
-        if divisor==1:
+        if divisor == 1:
             return dividend
 
         if divisor == -1:
