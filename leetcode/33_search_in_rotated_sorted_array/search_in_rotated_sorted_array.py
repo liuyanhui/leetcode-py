@@ -37,14 +37,20 @@ class Solution:
             mid = (l + r) // 2
             if nums[mid] == target:
                 return mid
+            # 左半部分有序
             if nums[l] <= nums[mid]:
+                # target在左半部分
                 if nums[l] <= target < nums[mid]:
                     r = mid - 1
+                # target在右半部分
                 else:
                     l = mid + 1
+            # 有半部分有序
             else:
+                # target在右半部分
                 if nums[mid] < target <= nums[r]:
                     l = mid + 1
+                # target在左半部分
                 else:
                     r = mid - 1
         return -1
