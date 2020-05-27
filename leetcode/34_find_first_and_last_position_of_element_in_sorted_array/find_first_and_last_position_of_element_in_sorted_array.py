@@ -59,14 +59,14 @@ def main():
     nums = [5, 7, 7, 8, 8, 10]
     target = 8
     ret = Solution().searchRange(nums, target)
-    print([3, 4])
+    print(ret)
     print(ret == [3, 4])
     print('--------------------')
 
     nums = [5, 7, 7, 8, 8, 10]
     target = 6
     ret = Solution().searchRange(nums, target)
-    print([-1, -1])
+    print(ret)
     print(ret == [-1,-1])
     print('--------------------')
 
@@ -74,14 +74,14 @@ def main():
     nums = [5]
     target = 5
     ret = Solution().searchRange(nums, target)
-    print([0, 0])
+    print(ret)
     print(ret == [0,0])
     print('--------------------')
 
     nums = [5]
     target = 6
     ret = Solution().searchRange(nums, target)
-    print([-1, -1])
+    print(ret)
     print(ret == [-1,-1])
     print('--------------------')
 
