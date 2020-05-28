@@ -24,6 +24,9 @@ Then 4 is the first bad version.
 class Solution:
     def firstBadVersion(self, n):
         """
+        验证通过:
+        Runtime: 28 ms, faster than 71.50% of Python3 online submissions for First Bad Version.
+        Memory Usage: 13.7 MB, less than 6.90% of Python3 online submissions for First Bad Version.
         :type n: int
         :rtype: int
         """
