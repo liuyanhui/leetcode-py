@@ -33,6 +33,8 @@ class Solution:
         时间复杂度为O(N**3)
         ------------
         验证通过
+        Runtime: 396 ms, faster than 57.52% of Python3 online submissions for 4Sum.
+        Memory Usage: 14 MB, less than 34.47% of Python3 online submissions for 4Sum.
         :param nums:
         :param target:
         :return:
@@ -51,6 +53,8 @@ class Solution:
             :param t_cache: 已经计算过的nums元素
             :return:
             """
+            if len(n) < N or N < 2 or t < n[0] * N or t > n[-1] * N:  # early termination
+                return
             if N == 2:
                 # N=2时,转化为2_sum问题
                 # 用户hashtable的思路,不适用于此类问题,因为nums中存在重复的数字.使用hashtable需要记录每个数字出现的次数,在计算过程中还需要对次数进行增减,很繁琐.
@@ -78,6 +82,8 @@ class Solution:
                 t_cache.append(n[i])
                 findNsum(n, t - n[i], N - 1, i + 1, t_cache)
                 t_cache.pop()
+                # 上面的这三行代码可以有下面的这一行代码替换
+                # findNsum(n,t-n[i], N - 1, i + 1, t_cache+[n[i]])
 
         cache = []
         findNsum(nums, target, 4, 0, cache)
