@@ -56,6 +56,12 @@ def main():
     print(ret == 1)
     print('--------------------')
 
+    nums = [3, 4, 5, 6, 7, 8, 9]
+    ret = Solution().findMin(nums)
+    print(ret)
+    print(ret == 3)
+    print('--------------------')
+
 
 if __name__ == "__main__":
     main()
