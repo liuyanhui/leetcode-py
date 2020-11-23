@@ -56,17 +56,17 @@ class Solution:
 
 
 def main():
-    # s = "abc"
-    # ret = Solution().countSubstrings(s)
-    # print(ret)
-    # print(ret == 3)
-    # print("---------------------")
-    #
-    # s = "aaa"
-    # ret = Solution().countSubstrings(s)
-    # print(ret)
-    # print(ret == 6)
-    # print("---------------------")
+    s = "abc"
+    ret = Solution().countSubstrings(s)
+    print(ret)
+    print(ret == 3)
+    print("---------------------")
+
+    s = "aaa"
+    ret = Solution().countSubstrings(s)
+    print(ret)
+    print(ret == 6)
+    print("---------------------")
 
     s = "aba"
     ret = Solution().countSubstrings(s)
