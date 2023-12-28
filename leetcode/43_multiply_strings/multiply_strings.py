@@ -155,7 +155,7 @@ def main():
     num2 = "99"
     ret = Solution().multiply(num1, num2)
     print(ret)
-    print(ret == "99899001")
+    print(ret == "9899001")
     print("---------------------")
 
     num1 = "99999"
