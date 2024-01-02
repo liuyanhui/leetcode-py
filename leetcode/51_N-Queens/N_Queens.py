@@ -28,6 +28,9 @@ class Solution:
 
     def solveNQueens_1(self, n: int):
         """
+        Round 3
+        Score[3] Lower is harder
+
         Thinking：
         1.naive solution
         1.1. 递归+穷举
@@ -56,12 +59,25 @@ class Solution:
                 board[i][j] = "."
 
     def check_col(self, board, j):
+        """
+        校验列
+        :param board:
+        :param j:
+        :return:
+        """
         for i in range(len(board)):
             if board[i][j] == "Q":
                 return False
         return True
 
     def check_slash(self, board, i, j):
+        """
+        校验斜线方向
+        :param board:
+        :param i:
+        :param j:
+        :return:
+        """
         # forward to top and right
         x, y = i - 1, j + 1
         while 0 <= x and y <= len(board[0]) - 1:
@@ -82,6 +98,13 @@ class Solution:
         return True
 
     def check_backslash(self, board, i, j):
+        """
+        校验反斜线方向
+        :param board:
+        :param i:
+        :param j:
+        :return:
+        """
         # forward to top and left
         x, y = i - 1, j - 1
         while 0 <= x and 0 <= y:
