@@ -26,6 +26,7 @@ class Solution:
     def solveNQueens(self, n: int):
         return self.solveNQueens_1(n)
 
+    # review 需要掌握python的写法,这个实现更像是Java的写法.
     def solveNQueens_1(self, n: int):
         """
         Round 3
