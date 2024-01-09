@@ -34,6 +34,9 @@ class Solution:
 
     def maxSubArray_1(self, nums: list) -> int:
         """
+        Round 3
+        Score[2] Lower is harder
+
         Thinking：
         1.slide window solution
 
