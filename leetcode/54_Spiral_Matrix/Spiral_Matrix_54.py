@@ -22,7 +22,64 @@ n == matrix[i].length
 
 class Solution:
     def spiralOrder(self, matrix: list) -> list:
-        return self.spiralOrder_1(matrix)
+        return self.spiralOrder_2(matrix)
+
+    def spiralOrder_2(self, matrix: list) -> list:
+        """
+        Round 3
+        Score[1] Lower is harder
+
+        Thinking:
+        1.与spiralOrder_1()不同,非递归的一种简单实现
+        1.1. 采用[[0,1][1,0][0,-1][-1,0]]四种计算方式进行遍历
+
+        验证通过:
+        43 ms Beats 28.42%
+        17.26 MB Beats 27.69%
+
+        Args:
+            matrix:
+
+        Returns:
+
+        """
+        ret = []
+        xmin, xmax = 0, len(matrix) - 1
+        ymin, ymax = 0, len(matrix[0]) - 1
+        delta = ((0, 1), (1, 0), (0, -1), (-1, 0))
+        direct = 0  # direct=0 对应 delta[0],依次类推
+
+        i, j = 0, 0
+        while xmin <= xmax and ymin <= ymax:
+            while xmin <= i <= xmax and ymin <= j <= ymax:
+                ret.append(matrix[i][j]);
+                i += delta[direct][0]
+                j += delta[direct][1]
+            if direct == 0:
+                direct = 1
+                xmin += 1
+                i = xmin
+                j = ymax
+            elif direct == 1:
+                direct = 2
+                ymax -= 1
+                j = ymax
+                i = xmax
+            elif direct == 2:
+                direct = 3
+                xmax -= 1
+                i = xmax
+                j = ymin
+            elif direct == 3:
+                direct = 0
+                ymin += 1
+                j = ymin
+                i = xmin
+
+            if xmin > xmax and ymin > ymax:
+                break
+
+        return ret
 
     def spiralOrder_1(self, matrix: list) -> list:
         """
@@ -40,7 +97,7 @@ class Solution:
         验证通过:
         42 ms Beats 35.82%
         17.42 MB Beats 5.53%
-        
+
         Args:
             matrix:
 
@@ -53,7 +110,7 @@ class Solution:
             if r0 > r1 or c0 > c1:
                 return
             # review 向右和向下不会出现重复计算,所以不用判断下标是否越界.
-            # review 由于二维数组m*n且m!=n,所以要采用横向闭区间,纵向开区间的方式.
+            # review 由于二维数组m*n且m!=n,所以采用横向闭区间,纵向开区间的方式更简单.
             # from left to right ,[c0,c1],闭区间
             for i in range(c0, c1 + 1):
                 ret.append(matrix[r0][i])
