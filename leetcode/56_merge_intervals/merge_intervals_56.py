@@ -3,7 +3,7 @@ https://leetcode.com/problems/merge-intervals/
 56. Merge Intervals
 Medium
 ---------------------
-Given a collection of intervals, merge all overlapping intervals.
+Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
 Example 1:
 Input: [[1,3],[2,6],[8,10],[15,18]]
@@ -15,14 +15,46 @@ Input: [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
-NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
+Constraints:
+1 <= intervals.length <= 10^4
+intervals[i].length == 2
+0 <= starti <= endi <= 10^4
 """
 
 
 # 与 495. Teemo Attacking类似
 class Solution:
     def merge(self, intervals):
-        return self.merge_2(intervals)
+        return self.merge_3(intervals)
+
+    def merge_3(self, intervals: list) -> list:
+        """
+        Round 3
+        Score[3] Lower is harder
+
+        Thinking：
+        1. 两个区间[i1,j1][i2,j2]可以merge有几种情况：
+        1.1. 假设 i1<=i2
+        1.2. '交叉'。[i1,i2,j1,j2] ==> [min(i1,i2),max(j1,j2)]
+        1.3. '包含'。[i1,i2,j2,j1] ==> [min(i1,i2),max(j1,j2)]
+        1.4. '恰好相连'。[i1,j1==i2,j2] ==> [min(i1,i2),max(j1,j2)]
+        2. 先排序再依次合并。根据第一个数字排序。
+        2.1. 比较的规则是从右向左，由远及近。
+
+
+        验证通过:
+        Runtime 130 ms Beats 73.98%
+        Memory 21.36 MB Beats 44.44%
+        """
+        intervals.sort()
+        ret = [intervals[0]]
+        for item in intervals:
+            # 从右向左，由远及近的方式
+            if ret[-1][1] + 1 <= item[0]:  # 不合并
+                ret.append(item)
+            else:
+                ret[-1][1] = max(ret[-1][1], item[1])
+        return ret
 
     def merge_1(self, intervals):
         """
@@ -73,21 +105,18 @@ class Solution:
         return ret
 
 
+def do_func(intervals: list, expect: list):
+    ret = Solution().merge(intervals)
+    print(ret)
+    print(ret == expect)
+    print("---------------------")
+
+
 def main():
-    intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
-    ret = Solution().merge(intervals)
-    print(ret)
-    print("--------------------")
-
-    intervals = [[1, 4], [4, 5]]
-    ret = Solution().merge(intervals)
-    print(ret)
-    print("--------------------")
-
-    intervals = [[1, 4], [2, 3]]
-    ret = Solution().merge(intervals)
-    print(ret)
-    print("--------------------")
+    do_func([[1, 3], [2, 6], [8, 10], [15, 18]], [[1, 6], [8, 10], [15, 18]])
+    do_func([[1, 4], [4, 5]], [[1, 5]])
+    do_func([[1, 4], [2, 3]], [[1, 4]])
+    do_func([[1, 4], [5, 6]], [[1, 4], [5, 6]])
 
 
 if __name__ == "__main__":
