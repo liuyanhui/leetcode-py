@@ -71,6 +71,7 @@ class Solution:
             else:
                 break
         # 2.2. 判断,合并
+        # review 下面的代码,把ret.append()逻辑放在while循环中会简化实现
         if i == len(intervals):
             ret.append([newInterval[0], max(intervals[j - 1][1], newInterval[1])])
         elif j == 0:
