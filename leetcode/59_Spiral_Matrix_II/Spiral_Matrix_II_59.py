@@ -26,10 +26,12 @@ class Solution:
         Round 3
         Score[3] Lower is harder
 
-
         Thinking：
         1. 总结公式法 or 遍历计算法 or 分层遍历计算法。采用分层遍历计算法。
         2. 分层遍历计算法。每层按照clockwise方向遍历计算，函数为f(i_min,i_max,num_start,layer_size)，每个方向按照左闭右开'[i_min,i_min+layer_size)'的规则进行计算。
+
+        公式法见:
+        https://leetcode.com/problems/spiral-matrix-ii/solutions/22282/4-9-lines-python-solutions/
 
         验证通过:
         Runtime 39 ms Beats 58.05%
