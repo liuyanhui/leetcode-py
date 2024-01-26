@@ -33,10 +33,12 @@ class Solution:
 
     def uniquePathsWithObstacles_2(self, obstacleGrid: list) -> int:
         """
+        Round 3
+        Score[4] Lower is harder
         优化为一维DP数组
 
         验证通过:
-        
+
         Args:
             obstacleGrid:
 
@@ -60,7 +62,7 @@ class Solution:
     def uniquePathsWithObstacles_1(self, obstacleGrid: list) -> int:
         """
         Round 3
-        Score[3] Lower is harder
+        Score[4] Lower is harder
 
         Thinking：
         1. DP思路，dp[i][j]表示从grid[0][0]到grid[i][j]的路线数量
