@@ -24,14 +24,42 @@ Constraints:
 
 class Solution:
     def mySqrt(self, x: int) -> int:
-        return self.mySqrt_2(x)
+        return self.mySqrt_3(x)
+
+    def mySqrt_3(self, x: int) -> int:
+        """
+        Round 3
+        Score[2] Lower is harder
+
+        比mySqrt_2()更好理解的binary search方法
+        https://leetcode.com/problems/sqrtx/solutions/25047/a-binary-search-solution/
+
+        验证通过:
+
+        """
+        if x == 0: return 0
+        l, r = 1, x // 2
+        while l <= r:
+            mid = r - (r - l) // 2
+            if mid * mid == x:
+                return mid
+            elif mid * mid > x:
+                r = mid - 1
+            else:
+                if (mid + 1) * (mid + 1) > x:
+                    return mid
+                l = mid + 1
+        return l
 
     def mySqrt_2(self, x: int) -> int:
         """
         Round 3
         Score[2] Lower is harder
 
-        二分查找法,相加java版round2
+        二分查找法,
+        参考:
+        1. java版round2
+        2. https://leetcode.com/problems/sqrtx/solutions/25047/a-binary-search-solution/
 
         验证通过:
         Runtime 30 ms Beats 96.34%
@@ -84,6 +112,7 @@ def main():
     do_func(5, 2)
     do_func(3, 1)
     do_func(2, 1)
+    do_func(36, 6)
 
 
 if __name__ == "__main__":
