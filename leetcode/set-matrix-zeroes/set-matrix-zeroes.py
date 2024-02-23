@@ -194,7 +194,7 @@ def main():
     ]
     Solution().setZeroes(matrix)
     print(matrix)
-    # print("------------------")
+    print("------------------")
 
     matrix = [
         [0, 1, 2, 0],
