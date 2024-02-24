@@ -29,8 +29,12 @@ class Solution:
     def searchMatrix(self, matrix: list, target: int) -> bool:
         return self.searchMatrix_3(matrix, target)
 
+    # review 思路1,可以参考:74_search_a_2d_matrix.searchMatrix_2()
     def searchMatrix_3(self, matrix: list, target: int) -> bool:
         """
+        Round 3
+        Score[3] Lower is harder
+
         Thinking：
         1. Binary Search的变种
         假设m*n的matrix，查找的起点为[r1,c1]，终点为[r2,c2]
