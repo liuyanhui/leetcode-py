@@ -27,6 +27,9 @@ class Solution:
 
     def subsets_1(self, nums: List[int]) -> List[List[int]]:
         """
+        Round 3
+        Score[3] Lower is harder
+
         Thinking：
         1. 递归。找出从0~n的所有组合。
         遍历每个数字，每次遍历选择一个数字，然后递归，公式如下：
